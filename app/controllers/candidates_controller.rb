@@ -14,6 +14,7 @@ class CandidatesController < ApplicationController
       redirect_to '/candidates'
     else
       # 失敗
+      render :new
     end
   end
 
