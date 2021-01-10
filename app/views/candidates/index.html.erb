@@ -2,4 +2,24 @@
 
 <h1>Hi</h1>
 
-<a href="/candidates/new">Add Candidate</a>
+<%= link_to 'Add Candidate', new_candidate_path %>
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Party</td>
+    <td>Age</td>
+    <td>Politics</td>
+    <td>Action</td>
+  </tr>
+
+  <% @candidates.each do |candidate| %>
+    <tr>
+      <td><%= link_to candidate.name, candidate_path(candidate.id) %></td>
+      <td><%= candidate.party %></td>
+      <td><%= candidate.age %></td>
+      <td><%= candidate.politics %></td>
+      <td>action</td>
+    </tr>
+  <% end %>
+</table>
