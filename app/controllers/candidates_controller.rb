@@ -7,6 +7,18 @@ class CandidatesController < ApplicationController
   end
 
   def create
-    Candidate.new(params[:candidate])
+    @candidate = Candidate.new(candidate_params)
+
+    if @candidate.save
+      flash[:notice] = "Candidate created!"
+      redirect_to '/candidates'
+    else
+      # 失敗
+    end
+  end
+
+  private
+  def candidate_params
+    params.require(:candidate).permit(:name, :party, :age, :politics)
   end
 end
