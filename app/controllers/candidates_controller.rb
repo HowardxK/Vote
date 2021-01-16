@@ -48,9 +48,9 @@ class CandidatesController < ApplicationController
 
   def vote
     @candidate = Candidate.find_by(id: params[:id])
-    # @candidate.votes = @candidate.votes + 1
-    @candidate.increment(:votes)
-    @candidate.save
+    
+    # v = VoteLog.create(candidate: @candidate, ip_address: request.remote_ip)
+    @candidate.vote_logs.create(ip_address: request.remote_ip)
 
     flash[:notice] = "Voted!"
     redirect_to '/candidates'
